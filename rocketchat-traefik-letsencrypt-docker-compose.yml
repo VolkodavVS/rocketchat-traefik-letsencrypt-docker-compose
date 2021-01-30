@@ -45,7 +45,7 @@ services:
 
   rocketchat:
     # Image tag (replace with yours)
-    image: rocket.chat:3.8
+    image: rocket.chat:3.10
     command: >
       bash -c
         "for i in `seq 1 30`; do
@@ -78,7 +78,7 @@ services:
 
   traefik:
     # Image tag (replace with yours)
-    image: traefik:2.3
+    image: traefik:2.4
     command:
       - "--global.checkNewVersion=true"
       - "--global.sendAnonymousUsage=false"
