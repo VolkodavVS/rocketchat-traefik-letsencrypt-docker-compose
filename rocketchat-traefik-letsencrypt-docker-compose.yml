@@ -59,14 +59,14 @@ services:
     environment:
       PORT: 3000
       # Rocket.Chat URL (replace with yours)
-      ROOT_URL: https://rocketchat.heyvaldemar.net
+      ROOT_URL: https://rocketchat.batmfc.ru
       MONGO_URL: mongodb://mongo:27017/rocketchat
       MONGO_OPLOG_URL: mongodb://mongo:27017/local
       Accounts_UseDNSDomainCheck: 'false'
     labels:
       - "traefik.enable=true"
       # Rocket.Chat URL (replace with yours)
-      - "traefik.http.routers.rocketchat.rule=Host(`rocketchat.heyvaldemar.net`)"
+      - "traefik.http.routers.rocketchat.rule=Host(`rocketchat.batmfc.ru`)"
       - "traefik.http.routers.rocketchat.service=rocketchat"
       - "traefik.http.routers.rocketchat.tls.certresolver=letsencrypt"
       - "traefik.http.routers.rocketchat.entrypoints=websecure"
@@ -91,7 +91,7 @@ services:
       - "--providers.docker.exposedByDefault=false"
       - "--certificatesresolvers.letsencrypt.acme.tlschallenge=true"
       # Email for Let's Encrypt (replace with yours)
-      - "--certificatesresolvers.letsencrypt.acme.email=callvaldemar@gmail.com"
+      - "--certificatesresolvers.letsencrypt.acme.email=admin@batmfc.ru"
       - "--certificatesresolvers.letsencrypt.acme.storage=/etc/traefik/acme/acme.json"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
@@ -102,7 +102,7 @@ services:
     labels:
       - "traefik.enable=true"
       # Traefik URL (replace with yours)
-      - "traefik.http.routers.default.rule=Host(`traefik.heyvaldemar.net`)"
+      - "traefik.http.routers.default.rule=Host(`traefik.batmfc.ru`)"
       - "traefik.http.routers.default.service=api@internal"
       - "traefik.http.routers.default.tls.certresolver=letsencrypt"
       - "traefik.http.routers.default.entrypoints=websecure"
@@ -112,7 +112,7 @@ services:
       # Basic Authentication for Traefik Dashboard
       # Username: traefikadmin (replace with yours)
       # Passwords must be encoded using MD5, SHA1, or BCrypt
-      - "traefik.http.middlewares.authtraefik.basicauth.users=traefikadmin:$$2y$$10$$sMzJfirKC75x/hVpiINeZOiSm.Jkity9cn4KwNkRvO7hSQVFc5FLO"
+      - "traefik.http.middlewares.authtraefik.basicauth.users=traefikadmin:$2y$12$r1DNew48p4F4UQcdiCXX6.OHIGa5avoXZF8UxT6.DCH/hWdqtN6Mi"
       - "traefik.http.routers.http-catchall.rule=hostregexp(`{host:.+}`)"
       - "traefik.http.routers.http-catchall.entrypoints=web"
       - "traefik.http.routers.http-catchall.middlewares=redirect-to-https"
